@@ -34,17 +34,37 @@ class _HomeViewState extends ConsumerState<_HomeView> {
 
   @override
   Widget build(BuildContext context) {
-    // final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
+    final nowPlayingMovies = ref.watch(nowPlayingMoviesProvider);
     final slideshowMoviesProvider = ref.watch(moviesSlideshowProvider);
 
-    if (slideshowMoviesProvider.isEmpty) {
-      return const Center(child: CircularProgressIndicator());
-    }
-
-    return Column(
-      children: [
-        const CustomAppBar(),
-        MoviesSlideShow(movies: slideshowMoviesProvider),
+    return CustomScrollView(
+      slivers: [
+        const SliverAppBar(
+          toolbarHeight: 50,
+          floating: true,
+          title: CustomAppBar(),
+          // flexibleSpace: FlexibleSpaceBar(
+          // title: CustomAppBar(),
+          // ),
+        ),
+        SliverList(
+          delegate: SliverChildBuilderDelegate(
+            (context, index) {
+              return Column(
+                children: [
+                  // const CustomAppBar(),
+                  MoviesSlideShow(movies: slideshowMoviesProvider),
+                  MoviesHorizontalListView(
+                    movies: nowPlayingMovies,
+                    title: 'Solo en cines',
+                    subtitle: 'hey',
+                  ),
+                ],
+              );
+            },
+            childCount: 1,
+          ),
+        )
       ],
     );
   }

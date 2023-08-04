@@ -10,7 +10,7 @@ class CustomAppBar extends StatelessWidget {
 
     return SafeArea(
       child: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10),
+        padding: const EdgeInsets.only(bottom: 10, top: 0),
         child: SizedBox(
           width: double.infinity,
           child: Row(
