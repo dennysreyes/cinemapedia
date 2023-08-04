@@ -111,7 +111,7 @@ class _Slide extends StatelessWidget {
             width: 150,
             child: Text(
               movie.title,
-              maxLines: 1,
+              maxLines: 2,
               style: textStyle.titleSmall,
             ),
           ),
