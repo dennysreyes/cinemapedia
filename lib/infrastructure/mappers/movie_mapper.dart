@@ -16,8 +16,10 @@ class MovieMapper {
         popularity: movieDB.popularity,
         posterPath: (movieDB.posterPath != '')
             ? 'https://image.tmdb.org/t/p/w500${movieDB.posterPath}'
-            : 'no',
-        releaseDate: movieDB.releaseDate,
+            : 'https://privateflite.com/assets/global/img/image-not-found-dark.png',
+        releaseDate: (movieDB.releaseDate != null)
+            ? movieDB.releaseDate!
+            : DateTime.now(),
         title: movieDB.title,
         video: movieDB.video,
         voteAverage: movieDB.voteAverage,
@@ -37,7 +39,7 @@ class MovieMapper {
         popularity: movieDetails.popularity,
         posterPath: (movieDetails.posterPath != '')
             ? 'https://image.tmdb.org/t/p/w500${movieDetails.posterPath}'
-            : 'no',
+            : 'https://privateflite.com/assets/global/img/image-not-found-dark.png',
         releaseDate: movieDetails.releaseDate,
         title: movieDetails.title,
         video: movieDetails.video,
